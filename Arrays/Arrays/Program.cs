@@ -22,10 +22,7 @@ namespace ConsoleApp1
 
             Console.WriteLine("Numerele castigatoare sunt: -------------------------------------");
 
-            for (int index = 0; index < numere.Length; index++)
-            {
-                Console.WriteLine(numere[index]);
-            }
+            afisareVector(numere);
 
             for (int i = 0; i < preturi.Length; i++)
             {
@@ -34,10 +31,7 @@ namespace ConsoleApp1
 
             Console.WriteLine("Preturile reduse sunt:");
 
-            for (int i = 0; i < preturi.Length; i++)
-            {
-                Console.WriteLine(preturi[i]);
-            }
+            afisareVector(preturi);
 
             string[,] tabla = new string[3, 3] {
                 { "0", "0", "X" },
@@ -64,19 +58,13 @@ namespace ConsoleApp1
 
             Console.WriteLine("Inainte de sortare:");
 
-            for (int i = 0; i < names.Length; i++)
-            {
-                Console.WriteLine(names[i]);
-            }
+            afisareVector(names);
 
             Array.Sort(names);
 
             Console.WriteLine("Dupa sortare:");
 
-            for (int i = 0; i < names.Length; i++)
-            {
-                Console.WriteLine(names[i]);
-            }
+            afisareVector(names);
 
             int[] Numbers = new int[] { 12, 3, 5, 7, 9 };
             int[] Numbers2 = new int[] { 1, 3, 5, 7, 9 };
@@ -102,10 +90,7 @@ namespace ConsoleApp1
             double[] first2 = temperaturi.Take<double>(2).ToArray();
 
             Console.WriteLine("Prognoza urmatoarele 2 zile:");
-            for (int i = 0; i < first2.Length; i++)
-            {
-                Console.WriteLine(first2[i]);
-            }
+            afisareVector(first2);
 
             Console.WriteLine("Temperatura medie urmatoarele 10 zile: " + temperaturi.Average());
 
@@ -132,16 +117,109 @@ namespace ConsoleApp1
             double[] peste10 = temperaturi.Where(x => x > 10).ToArray();
 
             Console.WriteLine("Temperaturi peste 10:");
-            for (int i = 0; i < peste10.Length; i++)
-            {
-                Console.WriteLine(peste10[i]);
-            }
+
+            afisareVector(peste10);
 
             int ct = temperaturi.Count(x => x > 10);
             Console.WriteLine(ct + " din urmatoarele 10 zile au temperaturi peste 10");
 
+            Console.WriteLine(Adunare(10, 11));
+
+            Console.WriteLine(repeatString("ana are mere ", 2));
+
+            string s = "Ana are mere ";
+            string mesaj = repeatString(s, 3);
+
+            Console.WriteLine(mesaj);
+
+            CheckInGuest("Viorel", 7, true);
+
+            CheckInGuest(nrN: 5, name: "Giani");
+
+            Console.WriteLine(ariaCerc(2.3));
+
+            int x = 5, y = 6;
+
+            inversare(ref x,ref y);
+
+            Console.WriteLine(x + " " + y);
+
+            int[] vector = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            afisareVectorPare(vector);
+            afisareVectorImpare(vector);
+
             Console.ReadKey();
         }
 
+
+
+        static void afisareVector(int[] vector)
+        {
+            for (int i = 0; i < vector.Length; i++)
+                Console.WriteLine(vector[i]);
+        }
+
+        static void afisareVector(double[] vector)
+        {
+            for (int i = 0; i < vector.Length; i++)
+                Console.WriteLine(vector[i]);
+        }
+
+        static void afisareVector(string[] vector)
+        {
+            for (int i = 0; i < vector.Length; i++)
+                Console.WriteLine(vector[i]);
+        }
+
+        static int Adunare(int a, int b)
+        {
+            return a + b;
+        }
+
+        static string repeatString(string mesaj,int nr = 2)
+        {
+            string result = "";
+
+            for (int i = 0; i < nr; i++)
+                result += mesaj;
+
+            return result;
+        }
+
+        static void CheckInGuest(string name, int nrN, bool wantsBr = false)
+        {
+            Console.WriteLine($"Am cazat pe {name} pentru {nrN} nopti, mic dejun: {wantsBr}");
+        }
+
+        static double ariaCerc(double raza)
+        {
+            double pi = 3.14;
+            return pi * raza * raza;
+        }
+
+        static void inversare(ref int x,ref int y)
+        {
+            int z = x;
+            x = y;
+            y = z;
+        }
+
+        static void afisareVectorPare(int[] vector)
+        {
+            for (int i = 0; i < vector.Length; i++)
+            {
+                if (vector[i] % 2 == 0)
+                 Console.WriteLine(vector[i]); 
+            }
+        }
+        static void afisareVectorImpare(int[] vector)
+        {
+            for (int i = 0; i < vector.Length; i++)
+            {
+                if (vector[i] % 2 == 1)
+                    Console.WriteLine(vector[i]);
+            }
+        }
     }
 }
