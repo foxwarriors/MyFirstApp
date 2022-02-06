@@ -61,8 +61,19 @@ namespace OOP
             Console.WriteLine( rec.Area());
             Console.WriteLine(ci.Area());
 
-            CalculatorSalariu cs = new CalculatorSalariu();
-            Console.WriteLine($"Salariul meu anual este de {cs.SalariuAnual(3000)} lei");
+            
+            Console.WriteLine($"Salariul meu anual este de {CalculatorSalariu.SalariuAnual(3000)} lei");
+
+
+            Club club1 = new Club();
+            Club club2 = new Club();
+
+            club1.AddMember();
+            club1.AddMember();
+            club2.AddMember();
+
+            Club.ShowMembers();
+            
 
         }
 

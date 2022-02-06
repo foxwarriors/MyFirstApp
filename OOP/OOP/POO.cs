@@ -189,10 +189,33 @@ namespace OOP
     {
         public static int NumarLuni = 12;
 
-        public double SalariuAnual(double salariuLunar)
+        public static double SalariuAnual(double salariuLunar)
         {
             return salariuLunar * NumarLuni;
 
+        }
+    }
+
+    public class Club
+    {
+        public static int NrMembers;
+
+        static Club()
+        {
+            NrMembers = 1;
+
+            Console.WriteLine("CLUB OPENED");
+        }
+
+        public void AddMember()
+        {
+            NrMembers++;
+
+        }
+
+        public static void ShowMembers()
+        {
+            Console.WriteLine("Members: " + NrMembers);
         }
     }
 
