@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Lesson6;
 namespace OOP
 {
     class Program
@@ -7,74 +7,28 @@ namespace OOP
         static void Main(string[] args)
         {
 
-            Car x = new Car("Mercedes", "S Klasse", 2020, "Rosu");
-           /* x.AnConstructie = 2018;
-            x.Brand = "Mercedes";
-            x.Culoare = "Rosu";
-            x.Model = "S Klasse";*/
+            Passenger p1 = new Passenger();
+            p1.ID = "12312";
+            p1.Name = "Costel Biju";
+            p1.TicketID = "313132";
+            p1.MealType = "Vegetarian";
+            p1.HandBaggage = 1;
+            p1.Baggage = 1;
 
-            Car x1 = new Car("BMW","X6", 2021, "Negru");
-            /*x1.AnConstructie = 2020;
-            x1.Brand = "BMW";
-            x1.Culoare = "Negru";
-            x1.Model = "X6";*/
+            Passenger p2 = new Passenger();
+            p2.ID = "1112312";
+            p2.Name = "Costelino Bijulino";
+            p2.TicketID = "31312332";
+            p2.MealType = "Carnivora";
+            p2.HandBaggage = 3;
+            p2.Baggage = 2;
 
-            x.Start();
-            x1.Start();
+            Flight f = new Flight();
+            f.Passengers = new Passenger[] { p1, p2 };
 
-            x.Brake();
-            x1.Brake();
+            Console.WriteLine("Pasager 1: " + f.Passengers[0].Name);
 
-            x1.Stop();
-
-            Console.WriteLine($"The car is a {x.getBrand()} {x.getModel()} and it was built in {x.getAn()}");
-            Console.WriteLine($"The car is a {x1.getBrand()} {x1.getModel()} and it was built in {x1.getAn()}");
-
-            Student s = new Student("Viorel Versace", "vx66");
-            s.Domain = "IT";
-            s.prezent();
-
-            BankAccount ba = new BankAccount();
-            ba.Deposit(100);
-            ba.Withdraw(20);
-
-            ba.ShowBalance();
-
-
-            Cat cat = new Cat();
-            Dog dog = new Dog();
-
-            cat.MakeSound();
-            dog.MakeSound();
-
-            Calculator calc = new Calculator();
-
-            Console.WriteLine(calc.Add(5, 10) + " " + calc.Add(3, 11, 4));
-
-            Rectangle rec = new Rectangle();
-            rec.l = 5;
-            rec.L = 10;
-
-            Circle ci = new Circle();
-            ci.r = 3;
-
-            Console.WriteLine( rec.Area());
-            Console.WriteLine(ci.Area());
-
-            
-            Console.WriteLine($"Salariul meu anual este de {CalculatorSalariu.SalariuAnual(3000)} lei");
-
-
-            Club club1 = new Club();
-            Club club2 = new Club();
-
-            club1.AddMember();
-            club1.AddMember();
-            club2.AddMember();
-
-            Club.ShowMembers();
-            
-
+            Console.WriteLine("Pasager 2: " + f.Passengers[1].Name);
         }
 
     }
