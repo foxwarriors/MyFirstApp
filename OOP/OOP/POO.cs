@@ -66,9 +66,9 @@ namespace OOP
 
     public class Person
     {
-        protected string Name;
+        public string Name;
 
-        protected string ID;
+        public string ID;
     }
 
     public class Student : Person
