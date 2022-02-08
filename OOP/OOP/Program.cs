@@ -32,21 +32,49 @@ namespace OOP
 
             Console.WriteLine("Pasager 2: " + f.Passengers[1].ToString());
 
+            Lesson6.Car car = new Lesson6.Car();
+            car.TankLevel = 10;
+            car.TankCapacity = 50;
+            car.Start();
 
-            Point a = new Point();
-            Point b = new Point();
-            a.X = 5;
-            a.Y = 3;
-            b.X = 6;
-            b.Y = 4;
+            ElectricCar ec = new ElectricCar();
+            ec.BatteryCapacity = 70;
+            ec.Start();
 
-            Console.WriteLine("A: " + a.ToString());
-            Console.WriteLine("B: " + b.ToString());
+            Lesson6.Person person1 = new Lesson6.Person();
+            person1.ID = "vx55";
+            person1.Name = "Viorel Mirel";
 
-            Console.WriteLine("A=B?" + a.Equals(b));
+            Passenger passenger1 = new Passenger();
+            passenger1.TicketID = "1231ws";
+            passenger1.Name = "titel costel";
+            passenger1.MealType = "veggy";
+            passenger1.HandBaggage = 2;
+            passenger1.Baggage = 0;
+            passenger1.SeatNumber = "23e";
 
-            Console.WriteLine("A Hash Code: " + a.GetHashCode());
-            Console.WriteLine("A Hash Code: " + b.GetHashCode());
+           Console.WriteLine(person1.ToString());
+           Console.WriteLine(passenger1.ToString());
+
+
+            Clock cl = new Clock();
+            ClockWithWeather clw = new ClockWithWeather();
+
+            Console.WriteLine(cl.Hour +" "+ cl.Minute);
+            Console.WriteLine(clw.Hour +" "+ clw.Minute + " " + clw.Temperature);
+
+
+            Square sq = new Square();
+            sq.Latura = 5;
+            Console.WriteLine(sq.Area());
+            Console.WriteLine(sq.MyArea);
+
+            Point pt1 = new Point(1, 6);
+            Point pt2 = new Point(2, 8);
+
+
+            Console.WriteLine(pt1 < pt2);
+            Console.WriteLine(pt1 > pt2);
         }
 
     }
