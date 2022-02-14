@@ -1,12 +1,14 @@
 ﻿using System;
 
+
 namespace Lectia_8
 {
     class Program
     {
         static void Main(string[] args)
         {
-            try
+            // Snippet 1 - exemplu de try catch and finally
+            /*try
             {
                 CalculateAndShowAge(192);
 
@@ -54,6 +56,57 @@ namespace Lectia_8
         {
             Console.WriteLine(age);
         }
+            */
+
+
+            Card MyCard = new Card { Owner = new Client { Name = "Viorel", yearOfBirth = 2005 } };
+
+            shop.Buy("cigarettes, gum, milk, bread", MyCard);
+
+        }
+    }
+}
+
+
+public static class shop
+{
+    public static void Buy(string itemsInCart, Card card)
+    {
+        if(card.Owner.Age < 18 && itemsInCart.Contains("cigar"))
+        {
+            throw new SaleNotPermittedException("Este nepermisa vanzarea de tutun catre minori");
+        }
+        else
+        {
+            Console.WriteLine("Va mai asteptam!");
+
+        }
+    }
+}
+
+public class Card
+{
+    public Client Owner;
+
+}
+
+public class Client
+{
+    public string Name;
+    public int yearOfBirth;
+    public int Age
+    {
+        get
+        {
+            return DateTime.Now.Year - yearOfBirth;
+        }
+    }
+}
+
+public class SaleNotPermittedException : Exception
+{
+    public SaleNotPermittedException(string msg) : base(msg)
+    {
 
     }
 }
