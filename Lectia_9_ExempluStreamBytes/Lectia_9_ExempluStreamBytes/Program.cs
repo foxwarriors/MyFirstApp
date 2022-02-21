@@ -17,8 +17,8 @@ namespace Lectia_9_ExempluStreamBytes
             {
                 string mesaj = "salut, din c# in fisier!";
                 byte[] data = Encoding.UTF8.GetBytes(mesaj);
-
-                stream.Write(data, 0, data.Length);
+                stream.Write(Encoding.UTF8.GetBytes(mesaj), 0, Encoding.UTF8.GetBytes(mesaj).Length);
+               //stream.Write(data, 0, data.Length);
             }
 
             Console.WriteLine("Am terminat scrierea in fisierul: " + path);
@@ -26,11 +26,11 @@ namespace Lectia_9_ExempluStreamBytes
 
             //scriere cu string de caractere
 
-            using(StreamWriter sw = new StreamWriter(path))
+           /* using(StreamWriter sw = new StreamWriter(path))
             {
                 string characters = "Direct acest mesaj. Voi ce faceti?";
                 sw.Write(characters);
-            }
+            }*/
 
             #endregion
         }
