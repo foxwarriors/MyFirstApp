@@ -219,6 +219,79 @@ namespace Lectia_11_SortareColectii
             foreach (int n in noDuplicates)
                 Console.Write(n + " ");
             Console.WriteLine("");
+
+            List<Student> myStudents = new List<Student>();
+
+            myStudents.Add(new Student { Name = "Ana", Grade = 7, Domain = "Bio" });
+            myStudents.Add(new Student { Name = "Vio", Grade = 8, Domain = "Info" });
+            myStudents.Add(new Student { Name = "John", Grade = 6, Domain = "Info" });
+            myStudents.Add(new Student { Name = "Costache", Grade = 8, Domain = "Fr" });
+            myStudents.Add(new Student { Name = "Mircea", Grade = 9.3, Domain = "Ef" });
+            myStudents.Add(new Student { Name = "Piftel", Grade = 7.6, Domain = "Bio" });
+
+            Student s1 = myStudents.FirstOrDefault(s => s.Grade > 9);
+            if (s1 != null)
+                Console.WriteLine(s1.Name);
+
+            else
+                Console.WriteLine("No student found.");
+
+          var studentsByDomain = myStudents.GroupBy(s => s.Domain, s => s.Name);
+
+           foreach(var domain in studentsByDomain)
+            {
+                string studentNames = string.Join(", ", domain.ToList());
+                Console.WriteLine($"Key = {domain.Key} Names= {studentNames}");
+            }
+
+            Student last = myStudents.LastOrDefault(s => s.Grade > 9);
+            if (last != null)
+                Console.WriteLine("Last student with grade > 9 " + last.Name);
+
+            else
+                Console.WriteLine("No student found.");
+
+            var studentDescByGrade = myStudents.OrderByDescending(s => s.Grade);
+            foreach (Student s in studentDescByGrade)
+                Console.WriteLine(s.Grade + "-" + s.Name);
+
+            var minusF3 = myStudents.Skip(3);
+            foreach (Student s in minusF3)
+                Console.WriteLine(s.Name);
+            Console.WriteLine("--------");
+            var take3 = myStudents.Take(3);
+            foreach (Student s in take3)
+                Console.WriteLine(s.Name);
+            Console.WriteLine("-------");
+            var skip2take3 = myStudents.Skip(2).Take(3);
+            foreach (Student s in skip2take3)
+                Console.WriteLine(s.Name);
+            Console.WriteLine("Primii studenti cu media sub 9: ");
+            var lessThan9 = myStudents.TakeWhile(s => s.Grade < 9);
+            foreach (Student s in lessThan9)
+                Console.WriteLine(s.Name);
+
+            var ordered = myStudents.OrderByDescending(s => s.Grade)
+                .ThenBy(s => s.Name);
+
+            foreach (Student s in ordered)
+                Console.WriteLine(s.Grade + "-" + s.Name);
+
+            var students = myStudents.ToArray();
+
+            Console.WriteLine("Afisarea arrayului de studenti: ");
+
+            for(int i = 0; i < students.Length;i ++)
+            {
+                Console.WriteLine(i + ". " + students[i].Name);
+            }
+
+            Dictionary<string, Student> ds = myStudents.ToDictionary(s => s.Name);
+
+            foreach(var pair in ds)
+            {
+                Console.WriteLine("Key: " + pair.Key + ", Value: " + pair.Value);
+            }
         }
 
 
