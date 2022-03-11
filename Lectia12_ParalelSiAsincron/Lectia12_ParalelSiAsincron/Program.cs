@@ -58,10 +58,60 @@ namespace Lectia12_ParalelSiAsincron
             }
             Console.WriteLine("-----Method3 ends-----");
         }
+
+        public void TestThreads()
+        {
+            Thread ping = new Thread(Ping);
+            Thread pong = new Thread(Pong);
+            ping.Name = " a";
+            ping.Priority = ThreadPriority.AboveNormal;
+            pong.Name = " b";
+            ping.Start();
+            ping.Join();
+            pong.Start();
+        }
+
+        private void Pong()
+        {
+            int x = 0;
+            while (true)
+            {
+                Console.WriteLine(x + " Pong" +  Thread.CurrentThread.Name + " " +Thread.CurrentThread.ThreadState + " " +Thread.CurrentThread.Priority);
+                Thread.Sleep(1000);
+
+                x++;
+                if (x == 20)
+                {
+#pragma warning disable SYSLIB0006 // Type or member is obsolete
+                    Thread.CurrentThread.Abort();
+#pragma warning restore SYSLIB0006 // Type or member is obsolete
+                }
+            }
+        }
+
+        private void Ping()
+        {
+            int x = 0;
+            while (true)
+            {
+                Console.WriteLine(x + " Ping" + Thread.CurrentThread.Name + " " + Thread.CurrentThread.ThreadState + " " + Thread.CurrentThread.Priority);
+                Thread.Sleep(1000);
+
+                x++;
+                if (x == 20)
+                {
+#pragma warning disable SYSLIB0006 // Type or member is obsolete
+                    Thread.CurrentThread.Abort();
+#pragma warning restore SYSLIB0006 // Type or member is obsolete
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             Program p = new Program();
-            p.Run();
+            //p.Run();
+            p.TestThreads();
         }
     }
 }
